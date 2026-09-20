@@ -223,22 +223,18 @@
     </div>
   </footer>
 
-  <!-- SCRIPT CON DOBLE PRECIO (ANTICIPADO VS CONTRA ENTREGA) -->
+  <!-- SCRIPT -->
   <script>
     const WOMPI_PUBLIC_KEY = 'pub_prod_XxFLl5QnQP9lb8EIFDSnoZpFxLAcG5Sp';
 
-    // CATÁLOGO CON AMBOS PRECIOS CONFIGURADOS
     const CATALOGO = [
       {
         id: 'STR-001',
-        nombre: 'Chaqueta Cyberpunk Techwear',
-        precioAnticipado: 30000, // Precio pagando con Wompi (Más económico / Sin recargo)
-        precioCOD: 350000,        // Precio Pago Contra Entrega (Incluye recargo de transportadora)
-        descripcion: 'Este corrector de juanete, está diseñado para brindar el soporte que se necesita diariamente."
-"Diseño ergonómico: Separa suavemente el dedo pulgar para reducir la presión."
-"Ajuste seguro: Cuenta con una hebilla plástica regulable y una correa de talón que evita que se deslice o se caiga mientras te mueves."
-"Máxima comodidad: Confeccionado con materiales suaves y transpirables, ideales para usar en casa o con tu calzado cómodo.',
-        imagen: "imageProduct.jpg"
+        nombre: 'Corrector de Juanete Ergonómico',
+        precioAnticipado: 30000,
+        precioCOD: 35000,
+        descripcion: 'Este corrector de juanete está diseñado para brindar el soporte que se necesita diariamente. Diseño ergonómico: Separa suavemente el dedo pulgar para reducir la presión. Ajuste seguro y máxima comodidad.',
+        imagen: 'imageProduct.jpg'
       },
       {
         id: 'STR-002',
@@ -332,7 +328,6 @@
       return { name, phone, address, city, state };
     }
 
-    // PAGO ANTICIPADO CON WOMPI (Usa precioAnticipado)
     function pagarConWompi() {
       const datos = validarFormulario();
       if (!datos) return;
@@ -365,7 +360,6 @@
       });
     }
 
-    // PAGO CONTRA ENTREGA (Usa precioCOD)
     async function handleOrderSubmit() {
       const datos = validarFormulario();
       if (!datos) return;
