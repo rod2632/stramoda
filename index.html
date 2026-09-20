@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STRAMODA | Tech Fashion & Luxury</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Space Grotesk e Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Widget Oficial de Checkout Wompi -->
+  <script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#09090B',
+              card: '#18181B',
+              border: '#27272A',
+              neon: '#00F0FF',
+              purple: '#8B5CF6',
+              glow: 'rgba(0, 240, 255, 0.25)'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            tech: ['Space Grotesk', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #09090B;
+      color: #FAFAFA;
+      font-family: 'Inter', sans-serif;
+    }
+    .glass-nav {
+      background: rgba(9, 9, 11, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid #27272A;
+    }
+    .neon-border:focus-within, .neon-border:focus {
+      border-color: #00F0FF !important;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    }
+    .neon-btn {
+      background: linear-gradient(135deg, #00F0FF 0%, #3B82F6 100%);
+      transition: all 0.3s ease;
+    }
+    .neon-btn:hover {
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+      transform: translateY(-2px);
+    }
+    .tech-card {
+      background: #18181B;
+      border: 1px solid #27272A;
+      transition: all 0.3s ease;
+    }
+    .tech-card:hover {
+      border-color: rgba(0, 240, 255, 0.4);
+    }
+    .pulse-dot {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .3; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-brand-neon selection:text-black">
+
+  <!-- ENCABEZADO TECH GLASSMORPHISM -->
+  <header class="sticky top-0 z-40 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo STRAMODA -->
+      <a href="#" class="font-tech font-bold text-2xl tracking-widest text-white flex items-center gap-2">
+        <span class="text-brand-neon">[</span>STRAMODA<span class="text-brand-neon">]</span>
+      </a>
+
+      <!-- Navegación Central -->
+      <nav class="hidden md:flex items-center space-x-8 font-tech text-sm tracking-wider text-gray-400">
+        <a href="#catalogo" class="hover:text-brand-neon transition-colors">CATÁLOGO_</a>
+        <a href="https://wa.me/573136247758?text=Hola%20Stramoda,%20tengo%20una%20consulta" target="_blank" class="hover:text-brand-neon transition-colors">WHATSAPP_</a>
+        <a href="#contacto" class="hover:text-brand-neon transition-colors">CONTACTO_</a>
+      </nav>
+
+      <!-- Badge de Estado + Carrito -->
+      <div class="flex items-center gap-4">
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot"></span>
+          STOCK EN TIEMPO REAL
+        </div>
+        
+        <button onclick="document.getElementById('pedido-section').scrollIntoView({behavior: 'smooth'})" class="relative p-2 text-gray-300 hover:text-brand-neon transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <span class="absolute -top-1 -right-1 bg-brand-neon text-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center font-mono">1</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL / PRODUCTO -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start" id="catalogo">
+      
+      <!-- IZQUIERDA: GALERÍA Y VISUALIZADOR -->
+      <div class="space-y-4">
+        <div class="tech-card rounded-2xl overflow-hidden relative group">
+          <div class="absolute top-4 left-4 z-10">
+            <span class="px-3 py-1 rounded-md bg-black/80 backdrop-blur-md border border-brand-neon/40 text-brand-neon font-mono text-xs uppercase tracking-wider">
+              [EDICIÓN_LIMITADA]
+            </span>
+          </div>
+          
+          <img id="main-image" src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1000&q=80" alt="Colección Stramoda" class="w-full h-[480px] object-cover transition-transform duration-500 group-hover:scale-105">
+        </div>
+
+        <!-- Miniaturas -->
+        <div class="grid grid-cols-4 gap-4">
+          <button onclick="changeImage('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1000&q=80')" class="tech-card rounded-xl overflow-hidden h-20 focus:ring-2 focus:ring-brand-neon">
+            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=300&q=80" class="w-full h-full object-cover">
+          </button>
+          <button onclick="changeImage('https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=80')" class="tech-card rounded-xl overflow-hidden h-20 focus:ring-2 focus:ring-brand-neon">
+            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=300&q=80" class="w-full h-full object-cover">
+          </button>
+          <button onclick="changeImage('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80')" class="tech-card rounded-xl overflow-hidden h-20 focus:ring-2 focus:ring-brand-neon">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=300&q=80" class="w-full h-full object-cover">
+          </button>
+          <button onclick="changeImage('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=80')" class="tech-card rounded-xl overflow-hidden h-20 focus:ring-2 focus:ring-brand-neon">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=300&q=80" class="w-full h-full object-cover">
+          </button>
+        </div>
+      </div>
+
+      <!-- DERECHA: INFORMACIÓN DEL PRODUCTO & PEDIDO -->
+      <div class="space-y-6">
+        <div>
+          <div class="flex items-center gap-3 text-sm font-mono text-gray-400 mb-2">
+            <span>SKU: STR-2026-X</span>
+            <span>•</span>
+            <span class="text-brand-neon">ENVÍO NACIONAL GRATIS</span>
+          </div>
+          <h1 class="font-tech text-4xl font-bold tracking-tight text-white mb-2">Chaqueta Cyberpunk Techwear</h1>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Diseño vanguardista impermeable con acabados tácticos de lujo. Fabricada con textiles de alta resistencia y corte ergonómico de alta costura.
+          </p>
+        </div>
+
+        <!-- Precio -->
+        <div class="p-4 rounded-xl bg-brand-card border border-brand-border flex items-baseline justify-between">
+          <span class="text-xs font-mono text-gray-400">PRECIO FINAL</span>
+          <div class="text-right">
+            <span class="font-tech text-3xl font-bold text-white">COP $180,000</span>
+            <span class="block text-xs text-brand-neon font-mono">Pago seguro / Contra entrega</span>
+          </div>
+        </div>
+
+        <!-- Badges de Pago -->
+        <div class="grid grid-cols-2 gap-3 font-mono text-xs">
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border flex items-center gap-2 text-gray-300">
+            <svg class="w-5 h-5 text-brand-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>WOMPI: PSE / NEQUI</span>
+          </div>
+          <div class="p-3 rounded-lg bg-brand-card border border-brand-border flex items-center gap-2 text-gray-300">
+            <svg class="w-5 h-5 text-brand-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            <span>DESPACHO CON MASTERSHOP</span>
+          </div>
+        </div>
+
+        <!-- SECCIÓN FORMULARIO DE PEDIDO -->
+        <div id="pedido-section" class="tech-card rounded-2xl p-6 space-y-4">
+          <div class="border-b border-brand-border pb-3">
+            <h2 class="font-tech font-bold text-lg text-white flex items-center gap-2">
+              <span class="text-brand-neon">&gt;</span> DATOS DE ENVÍO Y PAGO
+            </h2>
+            <p class="text-xs font-mono text-gray-400">Completa tus datos de entrega antes de seleccionar la opción de pago.</p>
+          </div>
+
+          <form id="order-form" onsubmit="event.preventDefault();" class="space-y-4">
+            
+            <div>
+              <label class="block text-xs font-mono text-gray-400 mb-1">NOMBRE COMPLETO *</label>
+              <input type="text" id="full_name" required placeholder="Ej. Carlos Mendoza" 
+                class="w-full bg-black border border-brand-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none neon-border">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-mono text-gray-400 mb-1">TELÉFONO / WHATSAPP *</label>
+                <input type="tel" id="phone" required placeholder="Ej. 3136247758" 
+                  class="w-full bg-black border border-brand-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none neon-border">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-gray-400 mb-1">DEPARTAMENTO *</label>
+                <input type="text" id="state" required placeholder="Ej. Antioquia" 
+                  class="w-full bg-black border border-brand-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none neon-border">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-mono text-gray-400 mb-1">CIUDAD / MUNICIPIO *</label>
+                <input type="text" id="city" required placeholder="Ej. Medellín" 
+                  class="w-full bg-black border border-brand-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none neon-border">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-gray-400 mb-1">DIRECCIÓN DE ENTREGA *</label>
+                <input type="text" id="address" required placeholder="Ej. Calle 10 # 40-20 Apto 301" 
+                  class="w-full bg-black border border-brand-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none neon-border">
+              </div>
+            </div>
+
+            <!-- BOTONES DE PAGO -->
+            <div class="pt-2 space-y-3">
+              
+              <!-- 1. BOTÓN DE PAGO PSE / WOMPI -->
+              <button type="button" onclick="pagarConWompi()" class="w-full neon-btn text-black font-tech font-bold py-4 rounded-xl uppercase tracking-wider text-sm flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+                <span>PAGAR CON PSE / NEQUI / TARJETA ($180.000)</span>
+              </button>
+
+              <!-- 2. BOTÓN PAGO CONTRA ENTREGA (MASTERSHOP) -->
+              <button type="button" onclick="handleOrderSubmit()" id="btn-cod" class="w-full bg-zinc-800 hover:bg-zinc-700 text-white font-tech font-semibold py-3 rounded-xl uppercase tracking-wider text-xs border border-zinc-700 flex items-center justify-center gap-2 transition-all">
+                <span>PAGAR CONTRA ENTREGA (EFECTIVO)</span>
+              </button>
+
+            </div>
+            
+            <p id="status-msg" class="text-xs font-mono text-center hidden"></p>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- BOTÓN FLOTANTE DE WHATSAPP ATENCIÓN AL CLIENTE -->
+  <a href="https://wa.me/573136247758?text=Hola%20Stramoda,%20quiero%20más%20información%20sobre%20la%20Chaqueta%20Cyberpunk" 
+     target="_blank" 
+     rel="noopener noreferrer"
+     class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-black font-bold p-4 rounded-full shadow-lg flex items-center gap-3 transition-all duration-300 hover:scale-110 group">
+    
+    <!-- Icono de WhatsApp -->
+    <svg class="w-6 h-6 fill-current text-black" viewBox="0 0 24 24">
+      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.758.459 3.474 1.33 4.982L2 22l5.176-1.348c1.45.791 3.082 1.208 4.832 1.209h.005c5.508 0 9.989-4.478 9.99-9.984 0-2.668-1.038-5.176-2.924-7.062A9.923 9.923 0 0012.012 2zm5.753 14.22c-.241.678-1.401 1.295-1.932 1.348-.528.051-1.218.232-3.568-.69-2.996-1.173-4.921-4.218-5.07-4.417-.149-.199-1.218-1.621-1.218-3.092 0-1.472.772-2.196 1.047-2.493.275-.298.599-.372.8-.372.2 0 .4 0 .573.008.184.008.431-.07.674.513.243.583.829 2.025.901 2.173.072.148.12.322.024.513-.096.191-.144.31-.287.483-.143.173-.301.387-.43.52-.143.149-.292.312-.126.598.167.286.741 1.222 1.589 1.977 1.09 0.971 2.01 1.272 2.296 1.414.286.143.454.12.623-.073.169-.193.723-.843.916-1.132.193-.288.387-.241.648-.144.262.096 1.66.783 1.948.927.288.143.481.215.553.336.072.121.072.702-.169 1.38z"/>
+    </svg>
+
+    <span class="hidden sm:inline font-tech text-xs tracking-wider uppercase pr-1 font-bold">
+      Soporte WhatsApp: 313 624 7758
+    </span>
+  </a>
+
+  <!-- PIE DE PÁGINA FUTURISTA -->
+  <footer id="contacto" class="border-t border-brand-border bg-black py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="font-tech text-sm text-gray-500">
+        © 2026 STRAMODA. Todos los derechos reservados.
+      </div>
+      <div class="flex items-center space-x-6 text-xs font-mono text-gray-500">
+        <span>PASARELA WOMPI (PSE/NEQUI)</span>
+        <span>•</span>
+        <span>LOGÍSTICA MASTERSHOP</span>
+        <span>•</span>
+        <a href="https://wa.me/573136247758" target="_blank" class="hover:text-brand-neon">WA: 3136247758</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS DE LÓGICA Y CONEXIÓN DE APIS -->
+  <script>
+    // LLAVE PÚBLICA DE WOMPI RECIÉN INTEGRADA
+    const WOMPI_PUBLIC_KEY = 'pub_prod_XxFLl5QnQP9lb8EIFDSnoZpFxLAcG5Sp';
+    
+    // Si usas Mastershop, recuerda NO exponer la private key en HTML público. 
+    // Por ahora enviamos la notificación/pedido directamente.
+
+    function changeImage(src) {
+      document.getElementById('main-image').src = src;
+    }
+
+    // 1. INTEGRACIÓN PASARELA DE PAGOS WOMPI (PSE, NEQUI, TARJETAS)
+    function pagarConWompi() {
+      const name = document.getElementById('full_name').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+      const city = document.getElementById('city').value;
+      const state = document.getElementById('state').value;
+
+      if (!name || !phone || !address || !city || !state) {
+        alert('Por favor completa todos los datos de envío obligatorios.');
+        return;
+      }
+
+      const reference = 'STR-' + Date.now();
+      const checkout = new WidgetCheckout({
+        currency: 'COP',
+        amountInCents: 18000000, // $180.000 COP en centavos
+        reference: reference,
+        publicKey: WOMPI_PUBLIC_KEY,
+        customerData: {
+          fullName: name,
+          phoneNumber: phone,
+          phoneNumberPrefix: '+57'
+        },
+        shippingAddress: {
+          addressLine1: address,
+          city: city,
+          country: 'CO',
+          region: state
+        }
+      });
+
+      checkout.open(function (result) {
+        const transaction = result.transaction;
+        if (transaction && (transaction.status === 'APPROVED' || transaction.status === 'PENDING')) {
+          alert('¡Gracias por tu compra en STRAMODA! Tu pago por Wompi ha sido procesado con éxito. Estado: ' + transaction.status);
+          document.getElementById('order-form').reset();
+        }
+      });
+    }
+
+    // 2. LÓGICA DE ORDEN CONTRA ENTREGA (COD)
+    async function handleOrderSubmit() {
+      const name = document.getElementById('full_name').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+      const city = document.getElementById('city').value;
+      const state = document.getElementById('state').value;
+
+      if (!name || !phone || !address || !city || !state) {
+        alert('Por favor completa todos los datos de envío obligatorios.');
+        return;
+      }
+
+      const btn = document.getElementById('btn-cod');
+      const statusMsg = document.getElementById('status-msg');
+      
+      btn.disabled = true;
+      btn.innerText = "REGISTRANDO PEDIDO...";
+      
+      // Mensaje de éxito / Redirección o confirmación por WhatsApp
+      setTimeout(() => {
+        statusMsg.classList.remove('hidden');
+        statusMsg.className = "text-xs font-mono text-center text-brand-neon block mt-2";
+        statusMsg.innerText = "¡PEDIDO CONTRA ENTREGA REGISTRADO! NOS COMUNICAREMOS AL WHATSAPP 3136247758 PARA CONFIRMAR EL DESPACHO.";
+        
+        // Abrir WhatsApp automáticamente para confirmar la orden con el comercio
+        const mensajeWa = `Hola Stramoda,%20acabo%20de%20realizar%20un%20pedido%20Contra%20Entrega%20en%20la%20página:%0A- Nombre: ${encodeURIComponent(name)}%0A- Teléfono: ${encodeURIComponent(phone)}%0A- Ciudad: ${encodeURIComponent(city)}, ${encodeURIComponent(state)}%0A- Dirección: ${encodeURIComponent(address)}%0A- Producto: Chaqueta Cyberpunk ($180.000 COP)`;
+        window.open(`https://wa.me/573136247758?text=${mensajeWa}`, '_blank');
+
+        document.getElementById('order-form').reset();
+        btn.disabled = false;
+        btn.innerText = "PAGAR CONTRA ENTREGA (EFECTIVO)";
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
