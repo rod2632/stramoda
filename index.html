@@ -258,6 +258,7 @@
 
     function renderizarCatalogo() {
       const contenedor = document.getElementById('grid-productos');
+      if (!contenedor) return;
       contenedor.innerHTML = '';
 
       CATALOGO.forEach((prod) => {
@@ -300,18 +301,25 @@
       const prod = CATALOGO.find(p => p.id === id);
       if (prod) {
         productoSeleccionado = prod;
-        document.getElementById('producto-seleccionado-badge').innerText = `[PRODUCTO SELECCIONADO: ${prod.nombre.toUpperCase()}]`;
+        const badge = document.getElementById('producto-seleccionado-badge');
+        if (badge) badge.innerText = `[PRODUCTO SELECCIONADO: ${prod.nombre.toUpperCase()}]`;
         actualizarBotonesCheckout();
-        document.getElementById('pedido-section').scrollIntoView({ behavior: 'smooth' });
+        const section = document.getElementById('pedido-section');
+        if (section) section.scrollIntoView({ behavior: 'smooth' });
       }
     }
 
     function actualizarBotonesCheckout() {
-      document.getElementById('btn-wompi-text').innerText = `PAGAR ONLINE CON WOMPI`;
-      document.getElementById('btn-wompi-precio').innerText = `COP $${productoSeleccionado.precioAnticipado.toLocaleString('es-CO')} (Ahorras recargo)`;
+      const btnWompiText = document.getElementById('btn-wompi-text');
+      const btnWompiPrecio = document.getElementById('btn-wompi-precio');
+      const btnCodText = document.getElementById('btn-cod-text');
+      const btnCodPrecio = document.getElementById('btn-cod-precio');
 
-      document.getElementById('btn-cod-text').innerText = `PAGAR CONTRA ENTREGA (EFECTIVO)`;
-      document.getElementById('btn-cod-precio').innerText = `COP $${productoSeleccionado.precioCOD.toLocaleString('es-CO')} (Incluye recargo logístico)`;
+      if (btnWompiText) btnWompiText.innerText = `PAGAR ONLINE CON WOMPI`;
+      if (btnWompiPrecio) btnWompiPrecio.innerText = `COP $${productoSeleccionado.precioAnticipado.toLocaleString('es-CO')} (Ahorras recargo)`;
+
+      if (btnCodText) btnCodText.innerText = `PAGAR CONTRA ENTREGA (EFECTIVO)`;
+      if (btnCodPrecio) btnCodPrecio.innerText = `COP $${productoSeleccionado.precioCOD.toLocaleString('es-CO')} (Incluye recargo logístico)`;
     }
 
     function validarFormulario() {
@@ -371,14 +379,16 @@
       btn.innerText = "REGISTRANDO PEDIDO CONTRA ENTREGA...";
       
       setTimeout(() => {
-        statusMsg.classList.remove('hidden');
-        statusMsg.className = "text-xs font-mono text-center text-brand-neon block mt-2";
-        statusMsg.innerText = `¡PEDIDO REGISTRADO! VALOR TOTAL: $${productoSeleccionado.precioCOD.toLocaleString('es-CO')} (CON RECARGO LOGÍSTICO).`;
+        if (statusMsg) {
+          statusMsg.classList.remove('hidden');
+          statusMsg.className = "text-xs font-mono text-center text-brand-neon block mt-2";
+          statusMsg.innerText = `¡PEDIDO REGISTRADO! VALOR TOTAL: $${productoSeleccionado.precioCOD.toLocaleString('es-CO')} (CON RECARGO LOGÍSTICO).`;
+        }
         
         const mensajeWa = `Hola Stramoda,%20quiero%20confirmar%20mi%20pedido%20Contra%20Entrega:%0A- Producto: ${encodeURIComponent(productoSeleccionado.nombre)}%0A- Valor Total: $${productoSeleccionado.precioCOD.toLocaleString('es-CO')}%0A- Nombre: ${encodeURIComponent(datos.name)}%0A- Teléfono: ${encodeURIComponent(datos.phone)}%0A- Ciudad: ${encodeURIComponent(datos.city)}, ${encodeURIComponent(datos.state)}%0A- Dirección: ${encodeURIComponent(datos.address)}`;
         window.open(`https://wa.me/573136247758?text=${mensajeWa}`, '_blank');
 
-        document.getElementById('order-form').reset();
+        document.getElementById('order-form-form')?.reset();
         btn.disabled = false;
         actualizarBotonesCheckout();
       }, 1000);
